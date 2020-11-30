@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pyufw as ufw
 import socket
 import logging
