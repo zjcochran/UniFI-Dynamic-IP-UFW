@@ -8,3 +8,5 @@ The pyufw module.  Install with "pip3 install pyufw".
 
 # How to use
 Simply add the dynamic DNS hostnames to the hosts variable.  Its a simple array so you just need ["host1.fq.dn","host2.fq.dn",etc,etc]
+
+Obviously since the script interacts with UFW, it will need to be run sudoed or run as root.
