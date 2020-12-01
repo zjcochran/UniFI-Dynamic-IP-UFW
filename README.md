@@ -6,6 +6,9 @@ Python 3 (v3.6 minimum)
 
 The pyufw module.  Install with "pip3 install pyufw".
 
+Unifi Controller was installed per Crosstalk Solution's excellent guide:
+https://crosstalksolutions.com/definitive-guide-to-hosted-unifi/
+
 # How to use
 Simply add the dynamic DNS hostnames to the hosts variable in the Python script.  Its a simple array so you just need ["host1.fq.dn","host2.fq.dn",etc,etc]
 
