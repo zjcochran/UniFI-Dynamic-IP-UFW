@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
-import socket, logging, sys
+import socket, logging, sys, configparser
 import pyufw as ufw
 
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 logging.basicConfig(
-        filename="/var/log/UFW-DynIP.log",
+        filename=config.get('main_config', 'logfile'),
         level=logging.INFO,
         format="%(asctime)s:%(levelname)s:%(message)s"
         )
@@ -12,8 +15,8 @@ logging.basicConfig(
 # You only need to modify the hosts variable to fit your needs.
 # You could add more ports if you want, but what is here is all that you need.
 # Adding port 9090 is optional if you followed the online guides and installed cockpit
-hosts = [""]
-ports = ["2222", "8443"]
+hosts = config.get('main_config', 'hosts').split()
+ports = config.get('main_config', 'ports').split()
 
 # Needed empty array
 addresses = []
