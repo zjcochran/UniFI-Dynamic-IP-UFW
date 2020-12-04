@@ -28,8 +28,7 @@ rules = status["rules"]
 # Get the dynamic addresses from the hosts list
 for host in hosts:
     try:
-        ip = socket.gethostbyname(host)
-        addresses.append(ip)
+        addresses.append(socket.gethostbyname(host))
     except:
         logging.error("Error looking up host {}".format(host))
         sys.exit()
@@ -47,9 +46,9 @@ for address in addresses:
 
     # And add in the new rules
     for port in ports:
+        new_rule = "allow from {} to any port {}".format(address, port)
         try:
-            new_rule = "allow from {} to any port {}".format(address, port)
             ufw.add(new_rule)
             logging.info("Added rule {}".format(new_rule))
         except:
-            logging.error("Error creating rule {}".format(rules[rule]))
+            logging.error("Error creating rule {}".format(new_rule))
