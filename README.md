@@ -19,6 +19,8 @@ hosts = host1.fq.dn host2.fq.dn
 ports = 2222 8443
 ```
 
+For the hosts and ports, just leave spaces in between each item and the script will pick it all up automatically.
+
 If you want to use the cron script, give it +x permissions and modify the path inside to point to where you put the Python script.  I find /etc/cron.hourly/ to be a sufficient place to put the cron script.  You can also give +x directly to the Python script and run it directly.
 
 Obviously since the script interacts with UFW, it will need to be run sudoed or run as root.
