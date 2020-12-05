@@ -12,9 +12,12 @@ https://crosstalksolutions.com/definitive-guide-to-hosted-unifi/
 
 # How to use
 Simply edit config.ini to suit your needs (place config.ini in the same directory as the python script):
+
+```
 logfile = /var/log/UFW-DynIP.log
 hosts = host1.fq.dn host2.fq.dn
 ports = 2222 8443
+```
 
 If you want to use the cron script, give it +x permissions and modify the path inside to point to where you put the Python script.  I find /etc/cron.hourly/ to be a sufficient place to put the cron script.  You can also give +x directly to the Python script and run it directly.
 
