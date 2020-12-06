@@ -2,12 +2,13 @@
 
 import socket, logging, sys, configparser
 import pyufw as ufw
+from logging.handlers import RotatingFileHandler
 
 config = configparser.ConfigParser()
 config.read('config.ini')
 
 logging.basicConfig(
-        filename=config.get('main_config', 'logfile'),
+        handlers=[RotatingFileHandler(config.get('main_config', 'logfile'), maxBytes=10000, backupCount=10)],
         level=logging.INFO,
         format="%(asctime)s:%(levelname)s:%(message)s"
         )
