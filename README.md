@@ -1,4 +1,4 @@
-# UniFI-Dynamic-IP-UFW
+# UniFi-Dynamic-IP-UFW
 Python script for updating a Ubuntu UniFi Controller UFW for dynamic WAN IP clients
 
 # Requirements
@@ -6,7 +6,7 @@ Python 3 (v3.6 minimum)
 
 The pyufw module.  Install with "pip3 install pyufw".
 
-Unifi Controller was installed per Crosstalk Solution's excellent guide:
+UniFi Controller was installed per Crosstalk Solution's excellent guide:
 
 https://crosstalksolutions.com/definitive-guide-to-hosted-unifi/
 
