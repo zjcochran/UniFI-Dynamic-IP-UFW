@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 
-import socket, logging, sys, configparser
+import socket, logging, sys, configparser, os
 import pyufw as ufw
 from logging.handlers import RotatingFileHandler
 
+# Move to the script's directory
+os.chdir(sys.path[0])
+
+# Read in the config file
 config = configparser.ConfigParser()
 config.read('config.ini')
 
