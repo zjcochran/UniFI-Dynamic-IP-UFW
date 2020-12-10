@@ -2,7 +2,7 @@
 Python script for updating a Ubuntu UniFi Controller UFW for dynamic WAN IP clients
 
 # Requirements
-Python 3 (v3.6 minimum)
+Python 3
 
 The pyufw module.  Install with "pip3 install pyufw".
 
