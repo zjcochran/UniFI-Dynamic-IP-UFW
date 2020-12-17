@@ -20,7 +20,14 @@ os.chdir(sys.path[0])
 # Set up the config parser
 config = configparser.ConfigParser()
 
-# Read in the config file
+# Set up the logger
+logging.basicConfig(
+        handlers=[RotatingFileHandler(config.get('main_config', 'logfile'), maxBytes=10000, backupCount=10)],
+        level=logging.INFO,
+        format="%(asctime)s:%(levelname)s:%(message)s"
+        )
+
+# Check to see if the config file exists, if not, create a template one.
 if not os.path.exists('config.ini'):
     create_config_file(config)
     logging.error("New config file has been created and needs to be configured before script can run!")
@@ -29,13 +36,6 @@ if not os.path.exists('config.ini'):
 
 # Read in the config ini
 config.read('config.ini')
-
-# Set up the logger
-logging.basicConfig(
-        handlers=[RotatingFileHandler(config.get('main_config', 'logfile'), maxBytes=10000, backupCount=10)],
-        level=logging.INFO,
-        format="%(asctime)s:%(levelname)s:%(message)s"
-        )
 
 # Quick check to see if the hosts field is empty.  If so, error out and exit.
 hosts = config.get('main_config', 'hosts')
