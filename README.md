@@ -2,7 +2,7 @@
 Python script for updating a Ubuntu UniFi Controller UFW for dynamic WAN IP clients
 
 # Requirements
-Python 3 (v3.6 minimum)
+Python 3
 
 The pyufw module.  Install with "pip3 install pyufw".
 
@@ -15,11 +15,12 @@ Simply edit config.ini to suit your needs (place config.ini in the same director
 
 ```
 logfile = /var/log/UFW-DynIP.log
-hosts = host1.fq.dn host2.fq.dn
-ports = 2222 8443
+hosts = host1.fq.dn,host2.fq.dn
+ports = 2222,8443
+prev_addresses = 
 ```
 
-For the hosts and ports, just leave spaces in between each item and the script will pick it all up automatically.
+For the hosts and ports, put a comma in between each item like in the example and the script will pick it all up automatically.  You will not need to modify prev_addresses since that will be filled in automatically.
 
 If you want to use the cron script, give it +x permissions and modify the path inside to point to where you put the Python script.  I find /etc/cron.hourly/ to be a sufficient place to put the cron script.  You can also give +x directly to the Python script and run it directly.
 
