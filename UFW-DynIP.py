@@ -4,6 +4,12 @@ import socket, logging, sys, configparser, os
 import pyufw as ufw
 from logging.handlers import RotatingFileHandler
 
+# Move to the script's directory
+os.chdir(sys.path[0])
+
+# Set up the config parser
+config = configparser.ConfigParser()
+
 # Function to create config file if in same directory if needed
 def create_config_file(config_handler):
     config_handler.add_section('main_config')
@@ -14,14 +20,9 @@ def create_config_file(config_handler):
     with open('config.ini', 'w') as config_file:
         config_handler.write(config_file)
 
-# Move to the script's directory
-os.chdir(sys.path[0])
-
-# Set up the config parser
-config = configparser.ConfigParser()
-
-# Set up the logger
-logging.basicConfig(
+# Function that sets up the logger
+def set_up_logging():
+    logging.basicConfig(
         handlers=[RotatingFileHandler(config.get('main_config', 'logfile'), maxBytes=10000, backupCount=10)],
         level=logging.INFO,
         format="%(asctime)s:%(levelname)s:%(message)s"
@@ -29,13 +30,21 @@ logging.basicConfig(
 
 # Check to see if the config file exists, if not, create a template one.
 if not os.path.exists('config.ini'):
+    # Run the function to create the config file
     create_config_file(config)
+
+    # Read the new config file in and set up logging
+    config.read('config.ini')
+    set_up_logging()
+
+    # Throw the new config file errors and exit
     logging.error("New config file has been created and needs to be configured before script can run!")
     print("New config file has been created and needs to be configured before script can run!")
     sys.exit()
-
-# Read in the config ini
-config.read('config.ini')
+else:
+    # Read the config file in and set up logging
+    config.read('config.ini')
+    set_up_logging()
 
 # Quick check to see if the hosts field is empty.  If so, error out and exit.
 hosts = config.get('main_config', 'hosts')
