@@ -66,8 +66,7 @@ prev_addresses = config.get('main_config', 'prev_addresses')
 new_addresses = []
 
 # Get the list of rules
-status = ufw.status()
-rules = status["rules"]
+rules = ufw.status()["rules"]
 
 # Get the dynamic addresses from the hosts list
 # If there is an error returned, print the error, write it to log, and exit
@@ -92,8 +91,7 @@ if prev_addresses != '':
                     logging.error("Error deleting rule {}".format(rules[rule]))
 
 # Refresh the list of rules
-status = ufw.status()
-rules = status["rules"]
+rules = ufw.status()["rules"]
 
 # Add in the new rules
 for address in new_addresses:
