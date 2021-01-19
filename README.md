@@ -1,5 +1,5 @@
 # UniFi-Dynamic-IP-UFW
-Python script for updating a Ubuntu UniFi Controller UFW for dynamic WAN IP clients
+Python script for updating a Ubuntu UniFi Controller UFW for dynamic WAN IP clients and locking down access to the cloud server to just the WAN IP addresses of the clients.
 
 # Requirements
 Python 3
